@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
@@ -8,7 +8,8 @@ from common.functions import sigmoid, softmax
 
 
 def get_data():
-    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, flatten=True, one_hot_label=False)
+    (x_train, t_train), (x_test, t_test) = load_mnist(
+        normalize=True, flatten=True, one_hot_label=False)
     return x_test, t_test
 
 
@@ -31,14 +32,13 @@ def predict(network, x):
 
     return y
 
+if __name__ == "__main__":
+    x, t = get_data()
+    network = init_network()
+    accuracy_cnt = 0
+    for i, j in zip(x, t):
+        # 最も確率の高い要素のインデックスを取得
+        if np.argmax(predict(network, i)) == j:
+            accuracy_cnt += 1
 
-x, t = get_data()
-network = init_network()
-accuracy_cnt = 0
-for i in range(len(x)):
-    y = predict(network, x[i])
-    p= np.argmax(y) # 最も確率の高い要素のインデックスを取得
-    if p == t[i]:
-        accuracy_cnt += 1
-
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+    print(f"Accuracy: {float(accuracy_cnt) / len(x)}")

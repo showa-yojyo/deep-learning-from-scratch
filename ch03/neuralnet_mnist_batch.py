@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
@@ -8,7 +8,8 @@ from common.functions import sigmoid, softmax
 
 
 def get_data():
-    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, flatten=True, one_hot_label=False)
+    (x_train, t_train), (x_test, t_test) = load_mnist(
+        normalize=True, flatten=True, one_hot_label=False)
     return x_test, t_test
 
 
@@ -31,17 +32,16 @@ def predict(network, x):
 
     return y
 
+if __name__ == "__main__":
+    x, t = get_data()
+    network = init_network()
 
-x, t = get_data()
-network = init_network()
+    batch_size = 100 # バッチの数
+    accuracy_cnt = 0
+    for i in range(0, len(x), batch_size):
+        x_batch = x[i:i+batch_size]
+        y_batch = predict(network, x_batch)
+        p = np.argmax(y_batch, axis=1)
+        accuracy_cnt += np.sum(p == t[i:i+batch_size])
 
-batch_size = 100 # バッチの数
-accuracy_cnt = 0
-
-for i in range(0, len(x), batch_size):
-    x_batch = x[i:i+batch_size]
-    y_batch = predict(network, x_batch)
-    p = np.argmax(y_batch, axis=1)
-    accuracy_cnt += np.sum(p == t[i:i+batch_size])
-
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+    print(f"Accuracy: {float(accuracy_cnt) / len(x)}")
