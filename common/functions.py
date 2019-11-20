@@ -15,7 +15,8 @@ def sigmoid(x):
 
 
 def sigmoid_grad(x):
-    return (1.0 - sigmoid(x)) * sigmoid(x)
+    sigx = sigmoid(x)
+    return (1.0 - sigx) * sigx
 
 
 def relu(x):
@@ -31,12 +32,14 @@ def relu_grad(x):
 def softmax(x):
     if x.ndim == 2:
         x = x.T
-        x = x - np.max(x, axis=0)
-        y = np.exp(x) / np.sum(np.exp(x), axis=0)
+        x -= np.max(x, axis=0)
+        expx = np.exp(x)
+        y = expx / np.sum(expx, axis=0)
         return y.T
 
-    x = x - np.max(x) # オーバーフロー対策
-    return np.exp(x) / np.sum(np.exp(x))
+    x -= np.max(x) # オーバーフロー対策
+    expx = np.exp(x)
+    return expx / np.sum(expx)
 
 
 def sum_squared_error(y, t):
@@ -57,5 +60,4 @@ def cross_entropy_error(y, t):
 
 
 def softmax_loss(X, t):
-    y = softmax(X)
-    return cross_entropy_error(y, t)
+    return cross_entropy_error(softmax(X), t)
