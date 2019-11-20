@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
-from common.functions import *
+import numpy as np
+from common.functions import (
+    cross_entropy_error, sigmoid, sigmoid_grad, softmax,
+)
 from common.gradient import numerical_gradient
 
 

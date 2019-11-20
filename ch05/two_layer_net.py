@@ -1,10 +1,10 @@
 #!/usr/bin/env python
+from collections import OrderedDict
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from common.layers import *
 from common.gradient import numerical_gradient
-from collections import OrderedDict
+from common.layers import (Affine, Relu, SoftmaxWithLoss)
 
 
 class TwoLayerNet:

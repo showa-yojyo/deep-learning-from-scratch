@@ -2,7 +2,8 @@
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from common.optimizer import *
+from common.optimizer import (
+    AdaGrad, Adam, Momentum, Nesterov, RMSprop, SGD)
 
 class Trainer:
     """ニューラルネットの訓練を行うクラス
@@ -67,7 +68,7 @@ class Trainer:
         self.current_iter += 1
 
     def train(self):
-        for i in range(self.max_iter):
+        for _ in range(self.max_iter):
             self.train_step()
 
         test_acc = self.network.accuracy(self.x_test, self.t_test)

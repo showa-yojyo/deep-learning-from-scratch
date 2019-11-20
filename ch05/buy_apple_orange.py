@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from layer_naive import *
+from layer_naive import (AddLayer, MulLayer)
 
 apple = 100
 apple_num = 2

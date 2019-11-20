@@ -1,11 +1,11 @@
 #!/usr/bin/env python
+from collections import OrderedDict
+import pickle
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
-import pickle
 import numpy as np
-from collections import OrderedDict
-from common.layers import *
-
+from common.layers import (
+    Affine, Convolution, Dropout, Pooling, Relu, SoftmaxWithLoss)
 
 class DeepConvNet:
     """認識率99%以上の高精度なConvNet

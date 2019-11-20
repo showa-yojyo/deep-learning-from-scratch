@@ -1,11 +1,11 @@
 #!/usr/bin/env python
+from collections import OrderedDict
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
 import matplotlib.pyplot as plt
-from collections import OrderedDict
-from common.optimizer import *
-
+from common.optimizer import (
+    Adam, AdaGrad, Momentum, SGD)
 
 def f(x, y):
     return x**2 / 20.0 + y**2

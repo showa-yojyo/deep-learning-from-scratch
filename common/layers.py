@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import numpy as np
-from common.functions import *
+from common.functions import (
+    cross_entropy_error, sigmoid, softmax)
 from common.util import im2col, col2im
-
 
 class Relu:
     def __init__(self):

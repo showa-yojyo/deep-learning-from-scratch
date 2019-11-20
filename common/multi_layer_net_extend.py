@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+from collections import OrderedDict
 import sys, os
 sys.path.append(os.pardir) # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from collections import OrderedDict
-from common.layers import *
 from common.gradient import numerical_gradient
+from common.layers import (
+    Affine, BatchNormalization, Dropout, Relu, Sigmoid, SoftmaxWithLoss
+)
 
 class MultiLayerNetExtend:
     """拡張版の全結合による多層ニューラルネットワーク

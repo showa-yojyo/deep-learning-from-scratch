@@ -1,11 +1,12 @@
 #!/usr/bin/env python
+from collections import OrderedDict
+import pickle
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
-import pickle
 import numpy as np
-from collections import OrderedDict
-from common.layers import *
 from common.gradient import numerical_gradient
+from common.layers import (
+    Affine, Convolution, Pooling, Relu, SoftmaxWithLoss)
 
 
 class SimpleConvNet:

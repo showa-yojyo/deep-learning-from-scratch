@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+from collections import OrderedDict
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from collections import OrderedDict
-from common.layers import *
+from common.layers import (
+    Affine, Relu, Sigmoid, SoftmaxWithLoss)
 from common.gradient import numerical_gradient
 
 
