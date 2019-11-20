@@ -1,18 +1,10 @@
-# coding: utf-8
-import numpy as np
+#!/usr/bin/env python
+from itertools import product
+from nand_gate import NAND
 
-
-def OR(x1, x2):
-    x = np.array([x1, x2])
-    w = np.array([0.5, 0.5])
-    b = -0.2
-    tmp = np.sum(w*x) + b
-    if tmp <= 0:
-        return 0
-    else:
-        return 1
+def OR(a, b):
+    return NAND(NAND(a, a), NAND(b, b))
 
 if __name__ == '__main__':
-    for xs in [(0, 0), (1, 0), (0, 1), (1, 1)]:
-        y = OR(xs[0], xs[1])
-        print(str(xs) + " -> " + str(y))
+    for x in product((0, 1), (0, 1)):
+        print(f"{x} -> {OR(*x)}")
