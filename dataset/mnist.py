@@ -33,7 +33,7 @@ def _download(file_name):
     if os.path.exists(file_path):
         return
 
-    print("Downloading " + file_name + " ... ")
+    print(f"Downloading {file_name} ... ")
     urllib.request.urlretrieve(url_base + file_name, file_path)
     print("Done")
 
@@ -44,7 +44,7 @@ def download_mnist():
 def _load_label(file_name):
     file_path = dataset_dir + "/" + file_name
 
-    print("Converting " + file_name + " to NumPy Array ...")
+    print(f"Converting {file_name} to NumPy Array ...")
     with gzip.open(file_path, 'rb') as f:
             labels = np.frombuffer(f.read(), np.uint8, offset=8)
     print("Done")
@@ -54,7 +54,7 @@ def _load_label(file_name):
 def _load_img(file_name):
     file_path = dataset_dir + "/" + file_name
 
-    print("Converting " + file_name + " to NumPy Array ...")
+    print(f"Converting {file_name} to NumPy Array ...")
     with gzip.open(file_path, 'rb') as f:
             data = np.frombuffer(f.read(), np.uint8, offset=16)
     data = data.reshape(-1, img_size)

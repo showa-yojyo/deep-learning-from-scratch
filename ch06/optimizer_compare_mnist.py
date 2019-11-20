@@ -50,10 +50,10 @@ for i in range(max_iterations):
         train_loss[key].append(loss)
 
     if i % 100 == 0:
-        print( "===========" + "iteration:" + str(i) + "===========")
+        print(f"===========iteration:{i}===========")
         for key in optimizers.keys():
             loss = networks[key].loss(x_batch, t_batch)
-            print(key + ":" + str(loss))
+            print(f"{key}:{loss}")
 
 
 # 3.グラフの描画==========

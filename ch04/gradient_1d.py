@@ -14,7 +14,6 @@ def function_1(x):
 
 def tangent_line(f, x):
     d = numerical_diff(f, x)
-    print(d)
     return lambda t: d*t + f(x) - d*x
 
 if __name__ == "__main__":

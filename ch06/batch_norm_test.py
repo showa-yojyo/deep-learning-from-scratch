@@ -47,7 +47,7 @@ def __train(weight_init_std):
             train_acc_list.append(train_acc)
             bn_train_acc_list.append(bn_train_acc)
 
-            print("epoch:" + str(epoch_cnt) + " | " + str(train_acc) + " - " + str(bn_train_acc))
+            print(f"epoch: {epoch_cnt} | {train_acc} - {bn_train_acc}")
 
             epoch_cnt += 1
             if epoch_cnt >= max_epochs:
@@ -61,7 +61,7 @@ weight_scale_list = np.logspace(0, -4, num=16)
 x = np.arange(max_epochs)
 
 for i, w in enumerate(weight_scale_list):
-    print( "============== " + str(i+1) + "/16" + " ==============")
+    print(f"============== {i+1}/16 ==============")
     train_acc_list, bn_train_acc_list = __train(w)
 
     plt.subplot(4,4,i+1)

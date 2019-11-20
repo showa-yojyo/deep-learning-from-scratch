@@ -31,7 +31,7 @@ for i in range(int(x_test.shape[0] / batch_size)):
     acc += np.sum(y == tt)
 
 acc = acc / x_test.shape[0]
-print("test accuracy:" + str(acc))
+print(f"test accuracy: {acc}")
 
 classified_ids = np.array(classified_ids)
 classified_ids = classified_ids.flatten()

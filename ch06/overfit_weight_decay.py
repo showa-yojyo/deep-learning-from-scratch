@@ -49,7 +49,7 @@ for i in range(1000000000):
         train_acc_list.append(train_acc)
         test_acc_list.append(test_acc)
 
-        print("epoch:" + str(epoch_cnt) + ", train acc:" + str(train_acc) + ", test acc:" + str(test_acc))
+        print(f"epoch:{epoch_cnt}, train acc: {train_acc}, test acc: {test_acc}")
 
         epoch_cnt += 1
         if epoch_cnt >= max_epochs:
