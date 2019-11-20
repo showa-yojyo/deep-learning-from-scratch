@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import os
 import sys
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
@@ -31,7 +31,7 @@ for key in optimizers.keys():
     networks[key] = MultiLayerNet(
         input_size=784, hidden_size_list=[100, 100, 100, 100],
         output_size=10)
-    train_loss[key] = []    
+    train_loss[key] = []
 
 
 # 2:訓練の開始==========
@@ -39,14 +39,14 @@ for i in range(max_iterations):
     batch_mask = np.random.choice(train_size, batch_size)
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
-    
+
     for key in optimizers.keys():
         grads = networks[key].gradient(x_batch, t_batch)
         optimizers[key].update(networks[key].params, grads)
-    
+
         loss = networks[key].loss(x_batch, t_batch)
         train_loss[key].append(loss)
-    
+
     if i % 100 == 0:
         print( "===========" + "iteration:" + str(i) + "===========")
         for key in optimizers.keys():

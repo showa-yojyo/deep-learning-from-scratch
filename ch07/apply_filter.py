@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
@@ -22,7 +22,7 @@ def filter_show(filters, nx=4, show_num=16):
         ax.imshow(filters[i, 0], cmap=plt.cm.gray_r, interpolation='nearest')
 
 
-network = SimpleConvNet(input_dim=(1,28,28), 
+network = SimpleConvNet(input_dim=(1,28,28),
                         conv_param = {'filter_num':30, 'filter_size':5, 'pad':0, 'stride':1},
                         hidden_size=100, output_size=10, weight_init_std=0.01)
 
@@ -44,10 +44,10 @@ for i in range(16):
 
     w = w.reshape(1, *w.shape)
     #b = b.reshape(1, *b.shape)
-    conv_layer = Convolution(w, b) 
+    conv_layer = Convolution(w, b)
     out = conv_layer.forward(img)
     out = out.reshape(out.shape[2], out.shape[3])
-    
+
     ax = fig.add_subplot(4, 4, i+1, xticks=[], yticks=[])
     ax.imshow(out, cmap=plt.cm.gray_r, interpolation='nearest')
 

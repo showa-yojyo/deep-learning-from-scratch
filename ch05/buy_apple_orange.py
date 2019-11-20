@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 from layer_naive import *
 
 apple = 100

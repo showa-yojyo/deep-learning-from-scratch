@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import os
 import sys
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定

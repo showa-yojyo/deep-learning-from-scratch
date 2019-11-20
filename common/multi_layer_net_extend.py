@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import sys, os
 sys.path.append(os.pardir) # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
@@ -8,7 +8,7 @@ from common.gradient import numerical_gradient
 
 class MultiLayerNetExtend:
     """拡張版の全結合による多層ニューラルネットワーク
-    
+
     Weiht Decay、Dropout、Batch Normalizationの機能を持つ
 
     Parameters
@@ -26,7 +26,7 @@ class MultiLayerNetExtend:
     use_batchNorm: Batch Normalizationを使用するかどうか
     """
     def __init__(self, input_size, hidden_size_list, output_size,
-                 activation='relu', weight_init_std='relu', weight_decay_lambda=0, 
+                 activation='relu', weight_init_std='relu', weight_decay_lambda=0,
                  use_dropout = False, dropout_ration = 0.5, use_batchnorm=False):
         self.input_size = input_size
         self.output_size = output_size
@@ -50,9 +50,9 @@ class MultiLayerNetExtend:
                 self.params['gamma' + str(idx)] = np.ones(hidden_size_list[idx-1])
                 self.params['beta' + str(idx)] = np.zeros(hidden_size_list[idx-1])
                 self.layers['BatchNorm' + str(idx)] = BatchNormalization(self.params['gamma' + str(idx)], self.params['beta' + str(idx)])
-                
+
             self.layers['Activation_function' + str(idx)] = activation_layer[activation]()
-            
+
             if self.use_dropout:
                 self.layers['Dropout' + str(idx)] = Dropout(dropout_ration)
 
@@ -130,13 +130,13 @@ class MultiLayerNetExtend:
         for idx in range(1, self.hidden_layer_num+2):
             grads['W' + str(idx)] = numerical_gradient(loss_W, self.params['W' + str(idx)])
             grads['b' + str(idx)] = numerical_gradient(loss_W, self.params['b' + str(idx)])
-            
+
             if self.use_batchnorm and idx != self.hidden_layer_num+1:
                 grads['gamma' + str(idx)] = numerical_gradient(loss_W, self.params['gamma' + str(idx)])
                 grads['beta' + str(idx)] = numerical_gradient(loss_W, self.params['beta' + str(idx)])
 
         return grads
-        
+
     def gradient(self, x, t):
         # forward
         self.loss(x, t, train_flg=True)

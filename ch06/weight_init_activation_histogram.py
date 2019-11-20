@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/usr/bin/env python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -13,7 +13,7 @@ def ReLU(x):
 
 def tanh(x):
     return np.tanh(x)
-    
+
 input_data = np.random.randn(1000, 100)  # 1000個のデータ
 node_num = 100  # 各隠れ層のノード（ニューロン）の数
 hidden_layer_size = 5  # 隠れ層が5層
