@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 from itertools import product
-from nand_gate import NAND
-
-def AND(a, b):
-    return NAND(NAND(a, b), NAND(a, b))
+import sys, os
+sys.path.append(os.pardir)
+from common.gates import AND
 
 if __name__ == '__main__':
     for x in product((0, 1), (0, 1)):
