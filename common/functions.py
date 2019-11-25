@@ -30,6 +30,7 @@ def relu_grad(x):
 
 
 def softmax(x):
+    x = np.asarray(x)
     if x.ndim == 2:
         x = x.T
         x -= np.max(x, axis=0)
