@@ -80,7 +80,7 @@ def init_mnist():
     print("Done!")
 
 def _change_one_hot_label(X):
-    T = np.zeros((X.size, 10))
+    T = np.zeros((X.size, 10), dtype=np.bool)
     for idx, row in enumerate(T):
         row[X[idx]] = 1
 
