@@ -1,7 +1,7 @@
-# test_mnist.py
-
-from unittest import TestCase
-
+#!/usr/bin/env python
+"""test_mnist.py
+"""
+from unittest import (TestCase, main)
 import sys, os
 sys.path.append(os.pardir)
 import numpy as np
@@ -49,3 +49,6 @@ class MnistTestCase(TestCase):
         for i in (trainf[1], testf[1]):
             self.assertEqual(i.dtype, np.uint8)
             self.assertTrue(((i != 0) & (i != 1)).any())
+
+if __name__ == '__main__':
+    main()

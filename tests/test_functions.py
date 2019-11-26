@@ -1,5 +1,7 @@
-# test_functions.py
-from unittest import TestCase
+#!/usr/bin/env python
+"""test_functions.py
+"""
+from unittest import (TestCase, main)
 import numpy as np
 import sys, os
 sys.path.append(os.pardir)
@@ -44,3 +46,6 @@ class FunctionsTestCase(TestCase):
 
         # softmax must not return NAN
         self.assertFalse(np.isnan(softmax([1010, 1000, 990]).any()))
+
+if __name__ == '__main__':
+    main()

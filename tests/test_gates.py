@@ -1,5 +1,7 @@
-# test_gates.py
-from unittest import TestCase
+#!/usr/bin/env python
+"""test_gates.py
+"""
+from unittest import (TestCase, main)
 import sys, os
 sys.path.append(os.pardir)
 from common.gates import (NAND, AND, OR, XOR)
@@ -30,3 +32,5 @@ class GatesTestCase(TestCase):
         self.assertEqual(XOR(1, 0), 1)
         self.assertEqual(XOR(1, 1), 0)
 
+if __name__ == '__main__':
+    main()
